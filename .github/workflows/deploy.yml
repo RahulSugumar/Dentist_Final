@@ -1,0 +1,44 @@
+name: Deploy React Vite App to Hostinger
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      # 1. Checkout code
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      # 2. Setup Node.js
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      # 3. Install dependencies
+      - name: Install dependencies
+        run: npm install
+
+      # 4. Build the Vite + React project
+      - name: Build project
+        run: npm run build
+
+      # 5. Install lftp
+      - name: Install lftp
+        run: sudo apt-get update && sudo apt-get install -y lftp
+
+      # 6. Deploy using FTP (Hostinger compatible)
+      - name: Deploy to Hostinger via FTP
+        run: |
+          lftp <<EOF
+          open -u "${{ secrets.FTP_USERNAME }}","${{ secrets.FTP_PASSWORD }}" -p ${{ secrets.FTP_PORT }} ${{ secrets.FTP_SERVER }}
+          set ftp:passive-mode on
+          set ftp:ssl-allow no
+          mirror -R --delete --verbose dist/ /public_html/
+          quit
+          EOF
