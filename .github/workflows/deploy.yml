@@ -14,31 +14,38 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      # 2. Setup Node.js
+      # 2. Setup Node.js (with npm cache)
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
           node-version: 20
+          cache: npm
 
-      # 3. Install dependencies
+      # 3. Install dependencies (faster than npm install)
       - name: Install dependencies
-        run: npm install
+        run: npm ci
 
-      # 4. Build the Vite + React project
+      # 4. Build project (sourcemaps disabled in vite.config.js)
       - name: Build project
         run: npm run build
 
-      # 5. Install lftp
+      # 5. Install lftp (minimal output)
       - name: Install lftp
-        run: sudo apt-get update && sudo apt-get install -y lftp
+        run: sudo apt-get update -qq && sudo apt-get install -y -qq lftp
 
-      # 6. Deploy using FTP (Hostinger compatible)
+      # 6. FAST FTP deploy (no delete, no full scan)
       - name: Deploy to Hostinger via FTP
+        env:
+          FTP_HOST: ${{ secrets.FTP_SERVER }}
+          FTP_USER: ${{ secrets.FTP_USERNAME }}
+          FTP_PASS: ${{ secrets.FTP_PASSWORD }}
+          FTP_PORT: ${{ secrets.FTP_PORT }}
         run: |
-          lftp <<EOF
-          open -u "${{ secrets.FTP_USERNAME }}","${{ secrets.FTP_PASSWORD }}" -p ${{ secrets.FTP_PORT }} ${{ secrets.FTP_SERVER }}
+          lftp -p $FTP_PORT -u "$FTP_USER","$FTP_PASS" $FTP_HOST <<EOF
           set ftp:passive-mode on
           set ftp:ssl-allow no
-          mirror -R --delete --verbose dist/ /public_html/
+          set net:max-retries 2
+          set net:timeout 10
+          mirror -R dist/ /public_html/
           quit
           EOF
