@@ -487,7 +487,7 @@ const Booking = () => {
                             gap: '0.8rem',
                             boxShadow: '0 10px 20px rgba(212, 175, 55, 0.3)'
                         }}>
-                            Confirm Appointment <ArrowRight size={20} />
+                            Confirm appointment <ArrowRight size={20} />
                         </button>
                     </form>
                 </div>
