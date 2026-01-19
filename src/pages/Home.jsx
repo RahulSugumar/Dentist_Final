@@ -4,6 +4,7 @@ import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { Star, Shield, Activity, User, CheckCircle } from 'lucide-react';
 import doctorImage from '../assets/confident-doctor-clinic.jpg';
+import SmileGallery from '../components/SmileGallery';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -943,6 +944,8 @@ const Home = () => {
                     </div>
                 </div>
             </section>
+
+            <SmileGallery />
 
             {/* Testimonials Section */}
             <section className="section" style={{ position: 'relative', overflow: 'hidden', padding: '8rem 0', background: 'linear-gradient(to bottom, #ffffff, #f9f9f9)' }}>
