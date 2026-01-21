@@ -125,22 +125,49 @@ const Navbar = () => {
                         ))}
                     </div>
 
-                    <Link to="/booking" className="btn" style={{
-                        background: 'var(--color-text-primary)',
-                        color: 'white',
-                        padding: '0.8rem 2rem',
-                        borderRadius: '50px',
-                        fontSize: '0.9rem',
-                        fontWeight: '600',
-                        boxShadow: '0 10px 20px rgba(0,0,0,0.1)',
-                        border: 'none',
-                        display: 'flex',
-                        alignItems: 'center',
-                        gap: '0.5rem'
-                    }}>
-                        <span>Book Appointment</span>
-                        <Star size={14} fill="var(--color-accent)" color="var(--color-accent)" />
-                    </Link>
+                    <div style={{ display: 'flex', gap: '1rem', alignItems: 'center' }}>
+                        <Link to="/signup" className="btn" style={{
+                            background: 'transparent',
+                            color: 'var(--color-text-primary)',
+                            padding: '0.7rem 1.5rem',
+                            borderRadius: '50px',
+                            fontSize: '0.9rem',
+                            fontWeight: '600',
+                            border: '2px solid var(--color-accent)',
+                            display: 'flex',
+                            alignItems: 'center',
+                            textDecoration: 'none',
+                            transition: 'all 0.3s ease'
+                        }}
+                            onMouseOver={(e) => {
+                                e.currentTarget.style.background = 'var(--color-accent)';
+                                e.currentTarget.style.color = 'white';
+                            }}
+                            onMouseOut={(e) => {
+                                e.currentTarget.style.background = 'transparent';
+                                e.currentTarget.style.color = 'var(--color-text-primary)';
+                            }}>
+                            Get Started
+                        </Link>
+
+                        <Link to="/booking" className="btn" style={{
+                            background: 'var(--color-text-primary)',
+                            color: 'white',
+                            padding: '0.8rem 2rem',
+                            borderRadius: '50px',
+                            fontSize: '0.9rem',
+                            fontWeight: '600',
+                            boxShadow: '0 10px 20px rgba(0,0,0,0.1)',
+                            border: 'none',
+                            display: 'flex',
+                            alignItems: 'center',
+                            gap: '0.5rem',
+                            textDecoration: 'none'
+                        }}>
+                            <span>Book Appointment</span>
+                            <Star size={14} fill="var(--color-accent)" color="var(--color-accent)" />
+                        </Link>
+                    </div>
                 </div>
 
                 {/* Mobile Menu Button */}
@@ -203,7 +230,26 @@ const Navbar = () => {
                     ))}
                 </div>
 
-                <div style={{ marginTop: 'auto' }}>
+                <div style={{ marginTop: 'auto', display: 'flex', flexDirection: 'column', gap: '1rem' }}>
+                    <Link
+                        to="/signup"
+                        className="btn"
+                        onClick={() => setIsOpen(false)}
+                        style={{
+                            width: '100%',
+                            background: 'transparent',
+                            color: 'var(--color-text-primary)',
+                            padding: '1rem',
+                            borderRadius: '12px',
+                            justifyContent: 'center',
+                            fontWeight: '600',
+                            border: '2px solid var(--color-accent)',
+                            textDecoration: 'none'
+                        }}
+                    >
+                        Get Started
+                    </Link>
+
                     <Link
                         to="/booking"
                         className="btn"
@@ -215,12 +261,13 @@ const Navbar = () => {
                             padding: '1rem',
                             borderRadius: '12px',
                             justifyContent: 'center',
-                            fontWeight: '600'
+                            fontWeight: '600',
+                            textDecoration: 'none'
                         }}
                     >
                         Book Appointment
                     </Link>
-                    <div style={{ marginTop: '2rem', display: 'flex', alignItems: 'center', gap: '0.5rem', color: 'var(--color-text-secondary)', fontSize: '0.9rem' }}>
+                    <div style={{ marginTop: '1rem', display: 'flex', alignItems: 'center', gap: '0.5rem', color: 'var(--color-text-secondary)', fontSize: '0.9rem' }}>
                         <Phone size={16} />
                         <span>+91 98765 43210</span>
                     </div>

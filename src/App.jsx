@@ -7,6 +7,8 @@ import Services from './pages/Services';
 import Clinic from './pages/Clinic';
 import Contact from './pages/Contact';
 import Booking from './pages/Booking';
+import Login from './pages/Login';
+import Signup from './pages/Signup';
 
 function App() {
   return (
@@ -18,6 +20,8 @@ function App() {
         <Route path="clinic" element={<Clinic />} />
         <Route path="contact" element={<Contact />} />
         <Route path="booking" element={<Booking />} />
+        <Route path="login" element={<Login />} />
+        <Route path="signup" element={<Signup />} />
       </Route>
     </Routes>
   );
