@@ -525,6 +525,7 @@ const Booking = () => {
                                         id="date"
                                         name="date"
                                         required
+                                        min={new Date().toLocaleDateString('en-CA')} // 'en-CA' gives YYYY-MM-DD in local time
                                         value={formData.date}
                                         onChange={handleChange}
                                         style={{
