@@ -44,8 +44,10 @@ jobs:
           lftp -p $FTP_PORT -u "$FTP_USER","$FTP_PASS" $FTP_HOST <<EOF
           set ftp:passive-mode on
           set ftp:ssl-allow no
-          set net:max-retries 2
-          set net:timeout 10
+          set ftp:ssl-force no
+          set ssl:verify-certificate no
+          set net:max-retries 5
+          set net:timeout 40
           mirror -R dist/ /public_html/
           quit
           EOF
