@@ -1,13 +1,15 @@
 import React, { useState, useEffect, useRef } from 'react';
+import { useNavigate } from 'react-router-dom';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { Calendar, Clock, User, Phone, CheckCircle, ArrowRight } from 'lucide-react';
+import { Calendar, Clock, User, Phone, CheckCircle, ArrowRight, Calendar as CalendarIcon } from 'lucide-react';
 
 gsap.registerPlugin(ScrollTrigger);
 
 const Booking = () => {
     const heroRef = useRef(null);
     const formRef = useRef(null);
+    const navigate = useNavigate();
 
     const [formData, setFormData] = useState({
         name: '',
@@ -89,7 +91,7 @@ const Booking = () => {
         setError('');
 
         try {
-            const response = await fetch('https://dentist-backend-1lri.onrender.com/book-appointment', {
+            const response = await fetch(`${import.meta.env.VITE_API_URL}/book-appointment`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -117,6 +119,39 @@ const Booking = () => {
         } finally {
             setLoading(false);
         }
+    };
+
+    const getGoogleCalendarUrl = () => {
+        const { date, time, service, name } = formData;
+        if (!date || !time) return '#';
+
+        // Create date objects
+        const startDate = new Date(`${date}T${time}`);
+        const endDate = new Date(startDate.getTime() + 60 * 60 * 1000); // Add 1 hour
+
+        // Helper to format as YYYYMMDDTHHMMSS (Local Time)
+        const formatLocalTime = (d) => {
+            const pad = (n) => n.toString().padStart(2, '0');
+            return (
+                d.getFullYear().toString() +
+                pad(d.getMonth() + 1) +
+                pad(d.getDate()) +
+                'T' +
+                pad(d.getHours()) +
+                pad(d.getMinutes()) +
+                pad(d.getSeconds())
+            );
+        };
+
+        const start = formatLocalTime(startDate);
+        const end = formatLocalTime(endDate);
+
+        const title = encodeURIComponent(`Dentist Appointment: ${service}`);
+        const details = encodeURIComponent(`Appointment for ${service} with ${name}`);
+        const location = encodeURIComponent("T Nagar Dental Clinic");
+
+        // Note: We do NOT append 'Z' at the end, so Google treats it as "Floating Time" (User's Local Time)
+        return `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${title}&dates=${start}/${end}&details=${details}&location=${location}`;
     };
 
     if (submitted) {
@@ -174,9 +209,37 @@ const Booking = () => {
                     <p style={{ fontSize: '1.1rem', marginBottom: '2rem', color: 'var(--color-text-secondary)', lineHeight: '1.6' }}>
                         Thank you, <strong>{formData.name}</strong>. We have received your appointment request for <strong>{formData.date}</strong> at <strong>{formData.time}</strong>.
                     </p>
-                    <p style={{ color: 'var(--color-text-secondary)', marginBottom: '2rem' }}>
-                        An email invitation has been sent to <strong>{formData.email}</strong>.
-                    </p>
+
+                    <a
+                        href={getGoogleCalendarUrl()}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="btn"
+                        style={{
+                            display: 'flex',
+                            alignItems: 'center',
+                            justifyContent: 'center',
+                            gap: '0.8rem',
+                            width: '100%',
+                            padding: '1rem',
+                            borderRadius: '12px',
+                            background: '#fff',
+                            border: '1px solid #dadce0',
+                            color: '#3c4043',
+                            fontSize: '1rem',
+                            fontWeight: '500',
+                            marginBottom: '1rem',
+                            textDecoration: 'none',
+                            transition: 'all 0.2s ease',
+                            cursor: 'pointer'
+                        }}
+                        onMouseOver={(e) => e.currentTarget.style.background = '#f8f9fa'}
+                        onMouseOut={(e) => e.currentTarget.style.background = '#fff'}
+                    >
+                        <CalendarIcon size={20} color="#4285f4" />
+                        Add to Google Calendar
+                    </a>
+
                     <button
                         className="btn btn-primary"
                         style={{

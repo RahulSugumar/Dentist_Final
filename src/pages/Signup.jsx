@@ -30,7 +30,7 @@ const Signup = () => {
         }
 
         try {
-            const response = await fetch('https://dentist-backend-1lri.onrender.com/register', {
+            const response = await fetch(`${import.meta.env.VITE_API_URL}/register`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
