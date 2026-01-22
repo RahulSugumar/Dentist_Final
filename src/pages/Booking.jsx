@@ -12,12 +12,15 @@ const Booking = () => {
     const [formData, setFormData] = useState({
         name: '',
         phone: '',
+        email: '',
         date: '',
         time: '',
         service: 'Consultation'
     });
 
     const [submitted, setSubmitted] = useState(false);
+    const [loading, setLoading] = useState(false);
+    const [error, setError] = useState('');
 
     useEffect(() => {
         // Global Ambient Animations
@@ -80,11 +83,40 @@ const Booking = () => {
         setFormData(prev => ({ ...prev, [name]: value }));
     };
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
-        // Simulate API call
-        console.log('Booking Data:', formData);
-        setSubmitted(true);
+        setLoading(true);
+        setError('');
+
+        try {
+            const response = await fetch('http://127.0.0.1:8000/book-appointment', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    full_name: formData.name,
+                    phone_number: formData.phone,
+                    email: formData.email,
+                    appointment_date: formData.date,
+                    appointment_time: formData.time,
+                    service: formData.service
+                }),
+            });
+
+            const data = await response.json();
+
+            if (!response.ok) {
+                throw new Error(data.detail || 'Booking failed. Please try again.');
+            }
+
+            console.log('Booking Success:', data);
+            setSubmitted(true);
+        } catch (err) {
+            setError(err.message);
+        } finally {
+            setLoading(false);
+        }
     };
 
     if (submitted) {
@@ -143,7 +175,7 @@ const Booking = () => {
                         Thank you, <strong>{formData.name}</strong>. We have received your appointment request for <strong>{formData.date}</strong> at <strong>{formData.time}</strong>.
                     </p>
                     <p style={{ color: 'var(--color-text-secondary)', marginBottom: '2rem' }}>
-                        We will call you shortly on <strong>{formData.phone}</strong> to confirm.
+                        An email invitation has been sent to <strong>{formData.email}</strong>.
                     </p>
                     <button
                         className="btn btn-primary"
@@ -157,7 +189,10 @@ const Booking = () => {
                             justifyContent: 'center',
                             gap: '0.5rem'
                         }}
-                        onClick={() => setSubmitted(false)}
+                        onClick={() => {
+                            setSubmitted(false);
+                            setFormData(prev => ({ ...prev, date: '', time: '' }));
+                        }}
                     >
                         Book Another <ArrowRight size={18} />
                     </button>
@@ -173,6 +208,7 @@ const Booking = () => {
             background: 'radial-gradient(circle at 50% 0%, #ffffff 0%, #f8f9fa 100%)',
             minHeight: '100vh'
         }}>
+            {/* ... (background code omitted for brevity but preserved in output) ... */}
             {/* Global Ambient Background */}
             <div style={{
                 position: 'fixed',
@@ -294,6 +330,21 @@ const Booking = () => {
                             pointerEvents: 'none'
                         }}></div>
 
+                        {error && (
+                            <div style={{
+                                padding: '1rem',
+                                marginBottom: '2rem',
+                                borderRadius: '12px',
+                                background: 'rgba(239, 68, 68, 0.1)',
+                                border: '1px solid rgba(239, 68, 68, 0.2)',
+                                color: '#b91c1c',
+                                textAlign: 'center',
+                                fontSize: '0.95rem'
+                            }}>
+                                {error}
+                            </div>
+                        )}
+
                         <div className="grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '2rem', marginBottom: '2rem' }}>
                             <div className="flex flex-col gap-sm">
                                 <label htmlFor="name" style={{ fontWeight: '600', fontSize: '0.95rem', color: 'var(--color-text-secondary)', textTransform: 'uppercase', letterSpacing: '1px' }}>Full Name</label>
@@ -316,6 +367,41 @@ const Booking = () => {
                                             transition: 'all 0.3s ease'
                                         }}
                                         placeholder="John Doe"
+                                        onFocus={(e) => {
+                                            e.target.style.background = 'white';
+                                            e.target.style.boxShadow = '0 5px 15px rgba(212, 175, 55, 0.1)';
+                                            e.target.style.borderColor = 'var(--color-accent)';
+                                        }}
+                                        onBlur={(e) => {
+                                            e.target.style.background = 'rgba(255,255,255,0.5)';
+                                            e.target.style.boxShadow = 'none';
+                                            e.target.style.borderColor = 'rgba(0,0,0,0.1)';
+                                        }}
+                                    />
+                                </div>
+                            </div>
+
+                            <div className="flex flex-col gap-sm">
+                                <label htmlFor="email" style={{ fontWeight: '600', fontSize: '0.95rem', color: 'var(--color-text-secondary)', textTransform: 'uppercase', letterSpacing: '1px' }}>Email Address</label>
+                                <div style={{ position: 'relative' }}>
+                                    <User size={20} style={{ position: 'absolute', left: '1rem', top: '50%', transform: 'translateY(-50%)', color: 'var(--color-accent)' }} />
+                                    <input
+                                        type="email"
+                                        id="email"
+                                        name="email"
+                                        required
+                                        value={formData.email}
+                                        onChange={handleChange}
+                                        style={{
+                                            width: '100%',
+                                            padding: '1rem 1rem 1rem 3rem',
+                                            borderRadius: '12px',
+                                            border: '1px solid rgba(0,0,0,0.1)',
+                                            fontSize: '1rem',
+                                            background: 'rgba(255,255,255,0.5)',
+                                            transition: 'all 0.3s ease'
+                                        }}
+                                        placeholder="john@example.com"
                                         onFocus={(e) => {
                                             e.target.style.background = 'white';
                                             e.target.style.boxShadow = '0 5px 15px rgba(212, 175, 55, 0.1)';
@@ -476,7 +562,7 @@ const Booking = () => {
                             </select>
                         </div>
 
-                        <button type="submit" className="btn btn-primary" style={{
+                        <button type="submit" disabled={loading} className="btn btn-primary" style={{
                             width: '100%',
                             fontSize: '1.1rem',
                             padding: '1.2rem',
@@ -485,9 +571,11 @@ const Booking = () => {
                             alignItems: 'center',
                             justifyContent: 'center',
                             gap: '0.8rem',
-                            boxShadow: '0 10px 20px rgba(212, 175, 55, 0.3)'
+                            boxShadow: '0 10px 20px rgba(212, 175, 55, 0.3)',
+                            opacity: loading ? 0.7 : 1,
+                            cursor: loading ? 'not-allowed' : 'pointer'
                         }}>
-                            Confirm Appointments <ArrowRight size={20} />
+                            {loading ? 'Booking...' : 'Confirm Appointment'} {loading ? null : <ArrowRight size={20} />}
                         </button>
                     </form>
                 </div>
