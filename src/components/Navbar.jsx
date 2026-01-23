@@ -5,6 +5,7 @@ import { Menu, X, Phone, Star } from 'lucide-react';
 const Navbar = () => {
     const [isOpen, setIsOpen] = useState(false);
     const [scrolled, setScrolled] = useState(false);
+    const [isServicesHovered, setIsServicesHovered] = useState(false);
     const location = useLocation();
 
     const toggleMenu = () => setIsOpen(!isOpen);
@@ -91,8 +92,157 @@ const Navbar = () => {
 
                 {/* Desktop Navigation */}
                 <div className="hidden-mobile" style={{ display: 'flex', gap: '3rem', alignItems: 'center' }}>
-                    <div style={{ display: 'flex', gap: '2rem' }}>
-                        {navLinks.map((link) => (
+                    {navLinks.map((link) => {
+                        if (link.name === 'Services') {
+                            return (
+                                <div
+                                    key={link.name}
+                                    style={{ position: 'relative' }}
+                                    onMouseEnter={() => setIsServicesHovered(true)}
+                                    onMouseLeave={() => setIsServicesHovered(false)}
+                                >
+                                    <NavLink
+                                        to={link.path}
+                                        className={({ isActive }) => isActive ? 'active-link' : ''}
+                                        style={({ isActive }) => ({
+                                            textDecoration: 'none',
+                                            color: isActive ? 'var(--color-accent)' : 'var(--color-text-primary)',
+                                            fontWeight: isActive ? '600' : '500',
+                                            fontSize: '0.95rem',
+                                            letterSpacing: '0.5px',
+                                            transition: 'color 0.3s ease',
+                                            position: 'relative',
+                                            padding: '0.5rem 0',
+                                            display: 'flex',
+                                            alignItems: 'center',
+                                            gap: '4px'
+                                        })}
+                                    >
+                                        {link.name}
+                                        {/* Hover/Active Indicator */}
+                                        <span className="nav-indicator" style={{
+                                            position: 'absolute',
+                                            bottom: '0',
+                                            left: '0',
+                                            width: '100%',
+                                            height: '2px',
+                                            background: 'var(--color-accent)',
+                                            transform: 'scaleX(0)',
+                                            transformOrigin: 'right',
+                                            transition: 'transform 0.3s ease'
+                                        }}></span>
+                                    </NavLink>
+
+                                    {/* Dropdown Menu */}
+                                    <div style={{
+                                        position: 'absolute',
+                                        top: '100%',
+                                        left: '50%',
+                                        transform: isServicesHovered ? 'translateX(-50%) translateY(0)' : 'translateX(-50%) translateY(10px)',
+                                        opacity: isServicesHovered ? 1 : 0,
+                                        visibility: isServicesHovered ? 'visible' : 'hidden',
+                                        background: 'rgba(255, 255, 255, 0.95)',
+                                        backdropFilter: 'blur(20px)',
+                                        borderRadius: '16px',
+                                        padding: '1rem',
+                                        boxShadow: '0 10px 40px rgba(0,0,0,0.1)',
+                                        minWidth: '260px',
+                                        transition: 'all 0.3s cubic-bezier(0.16, 1, 0.3, 1)',
+                                        zIndex: 1000,
+                                        marginTop: '1.5rem',
+                                        border: '1px solid rgba(255,255,255,0.2)'
+                                    }}>
+                                        {/* Little triangle arrow at the top */}
+                                        <div style={{
+                                            position: 'absolute',
+                                            top: '-6px',
+                                            left: '50%',
+                                            transform: 'translateX(-50%) rotate(45deg)',
+                                            width: '12px',
+                                            height: '12px',
+                                            background: 'rgba(255, 255, 255, 0.95)',
+                                            borderLeft: '1px solid rgba(255,255,255,0.2)',
+                                            borderTop: '1px solid rgba(255,255,255,0.2)'
+                                        }}></div>
+
+                                        <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
+                                            {[
+                                                { name: 'Teeth Cleaning', path: null },
+                                                { name: 'Tooth Filling', path: '/services/tooth-filling' },
+                                                { name: 'Root Canal', path: null },
+                                                { name: 'Braces / Aligners', path: null },
+                                                { name: 'Tooth Extraction', path: null },
+                                                { name: 'Dental Implants', path: null },
+                                                { name: 'Cosmetic Dentistry', path: null }
+                                            ].map((service) => (
+                                                service.path ? (
+                                                    <Link
+                                                        key={service.name}
+                                                        to={service.path}
+                                                        style={{
+                                                            padding: '0.75rem 1rem',
+                                                            borderRadius: '8px',
+                                                            color: 'var(--color-text-primary)',
+                                                            fontSize: '0.9rem',
+                                                            fontWeight: '500',
+                                                            cursor: 'pointer',
+                                                            transition: 'all 0.2s ease',
+                                                            display: 'flex',
+                                                            alignItems: 'center',
+                                                            justifyContent: 'space-between',
+                                                            textDecoration: 'none'
+                                                        }}
+                                                        onMouseEnter={(e) => {
+                                                            e.currentTarget.style.background = 'rgba(var(--color-accent-rgb), 0.08)';
+                                                            e.currentTarget.style.color = 'var(--color-accent)';
+                                                            e.currentTarget.style.transform = 'translateX(5px)';
+                                                        }}
+                                                        onMouseLeave={(e) => {
+                                                            e.currentTarget.style.background = 'transparent';
+                                                            e.currentTarget.style.color = 'var(--color-text-primary)';
+                                                            e.currentTarget.style.transform = 'translateX(0)';
+                                                        }}
+                                                    >
+                                                        {service.name}
+                                                    </Link>
+                                                ) : (
+                                                    <div
+                                                        key={service.name}
+                                                        style={{
+                                                            padding: '0.75rem 1rem',
+                                                            borderRadius: '8px',
+                                                            color: 'var(--color-text-primary)',
+                                                            fontSize: '0.9rem',
+                                                            fontWeight: '500',
+                                                            cursor: 'pointer',
+                                                            transition: 'all 0.2s ease',
+                                                            display: 'flex',
+                                                            alignItems: 'center',
+                                                            justifyContent: 'space-between'
+                                                        }}
+                                                        onMouseEnter={(e) => {
+                                                            e.currentTarget.style.background = 'rgba(var(--color-accent-rgb), 0.08)';
+                                                            e.currentTarget.style.color = 'var(--color-accent)';
+                                                            e.currentTarget.style.transform = 'translateX(5px)';
+                                                        }}
+                                                        onMouseLeave={(e) => {
+                                                            e.currentTarget.style.background = 'transparent';
+                                                            e.currentTarget.style.color = 'var(--color-text-primary)';
+                                                            e.currentTarget.style.transform = 'translateX(0)';
+                                                        }}
+                                                    >
+                                                        {service.name}
+                                                    </div>
+                                                )
+                                            ))}
+                                        </div>
+                                    </div>
+                                </div>
+                            );
+                        }
+
+                        // Normal Links
+                        return (
                             <NavLink
                                 key={link.name}
                                 to={link.path}
@@ -122,8 +272,9 @@ const Navbar = () => {
                                     transition: 'transform 0.3s ease'
                                 }}></span>
                             </NavLink>
-                        ))}
-                    </div>
+                        );
+                    })}
+
 
                     <div style={{ display: 'flex', gap: '1rem', alignItems: 'center' }}>
                         <Link to="/signup" className="btn" style={{
@@ -275,19 +426,21 @@ const Navbar = () => {
             </div>
 
             {/* Overlay Backdrop for Mobile */}
-            {isOpen && (
-                <div
-                    onClick={() => setIsOpen(false)}
-                    style={{
-                        position: 'fixed',
-                        inset: 0,
-                        background: 'rgba(0,0,0,0.2)',
-                        backdropFilter: 'blur(2px)',
-                        zIndex: 998
-                    }}
-                ></div>
-            )}
-        </nav>
+            {
+                isOpen && (
+                    <div
+                        onClick={() => setIsOpen(false)}
+                        style={{
+                            position: 'fixed',
+                            inset: 0,
+                            background: 'rgba(0,0,0,0.2)',
+                            backdropFilter: 'blur(2px)',
+                            zIndex: 998
+                        }}
+                    ></div>
+                )
+            }
+        </nav >
     );
 };
 

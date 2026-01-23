@@ -10,6 +10,7 @@ import Contact from './pages/Contact';
 import Booking from './pages/Booking';
 import Login from './pages/Login';
 import Signup from './pages/Signup';
+import ToothFilling from './pages/ToothFilling';
 
 function App() {
   return (
@@ -25,6 +26,7 @@ function App() {
           <Route path="booking" element={<Booking />} />
           <Route path="login" element={<Login />} />
           <Route path="signup" element={<Signup />} />
+          <Route path="services/tooth-filling" element={<ToothFilling />} />
         </Route>
       </Routes>
     </>

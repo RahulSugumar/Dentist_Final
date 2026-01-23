@@ -1,4 +1,5 @@
 import React, { useEffect, useRef } from 'react';
+import { Link } from 'react-router-dom';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { Sparkles, PenTool, Microscope, Smile, Wrench, Hammer, Gem, Check, ArrowRight } from 'lucide-react';
@@ -25,6 +26,7 @@ const servicesList = [
         description: 'Restoring decayed or damaged teeth with tooth-colored composite materials for a natural look.',
         image: toothFillingImg,
         icon: PenTool,
+        path: '/services/tooth-filling',
         features: ['Composite Material', 'Natural Look', 'Cavity Protection', 'Long-lasting']
     },
     {
@@ -347,22 +349,42 @@ const Services = () => {
                                     </ul>
 
                                     <div style={{ marginTop: 'auto' }}>
-                                        <button style={{
-                                            background: 'transparent',
-                                            border: 'none',
-                                            color: 'var(--color-accent)',
-                                            fontWeight: '700',
-                                            fontSize: '0.9rem',
-                                            display: 'flex',
-                                            alignItems: 'center',
-                                            gap: '0.5rem',
-                                            cursor: 'pointer',
-                                            padding: 0,
-                                            textTransform: 'uppercase',
-                                            letterSpacing: '1px'
-                                        }}>
-                                            Learn More <ArrowRight size={16} />
-                                        </button>
+                                        {service.path ? (
+                                            <Link to={service.path} style={{
+                                                background: 'transparent',
+                                                border: 'none',
+                                                color: 'var(--color-accent)',
+                                                fontWeight: '700',
+                                                fontSize: '0.9rem',
+                                                display: 'flex',
+                                                alignItems: 'center',
+                                                gap: '0.5rem',
+                                                cursor: 'pointer',
+                                                padding: 0,
+                                                textTransform: 'uppercase',
+                                                letterSpacing: '1px',
+                                                textDecoration: 'none'
+                                            }}>
+                                                Learn More <ArrowRight size={16} />
+                                            </Link>
+                                        ) : (
+                                            <button style={{
+                                                background: 'transparent',
+                                                border: 'none',
+                                                color: 'var(--color-accent)',
+                                                fontWeight: '700',
+                                                fontSize: '0.9rem',
+                                                display: 'flex',
+                                                alignItems: 'center',
+                                                gap: '0.5rem',
+                                                cursor: 'pointer',
+                                                padding: 0,
+                                                textTransform: 'uppercase',
+                                                letterSpacing: '1px'
+                                            }}>
+                                                Learn More <ArrowRight size={16} />
+                                            </button>
+                                        )}
                                     </div>
                                 </div>
                             </div>

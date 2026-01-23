@@ -11,6 +11,7 @@
   --gradient-subtle: linear-gradient(180deg, #ffffff 0%, #f8f9fa 100%);
   --gradient-dark: linear-gradient(135deg, #333333 0%, #1a1a1a 100%);
 
+  --color-accent-rgb: 212, 175, 55;
   --color-accent: #d4af37;
   --color-accent-light: #f3d578;
   --color-text-primary: #2c2c2c;
