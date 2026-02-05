@@ -209,7 +209,7 @@ const Signup = () => {
                                         name="phone_number"
                                         type="tel"
                                         required
-                                        placeholder="9876543210"
+                                        placeholder="12125550123"
                                         value={formData.phone_number}
                                         onChange={handleChange}
                                         style={inputStyle}

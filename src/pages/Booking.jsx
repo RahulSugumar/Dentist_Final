@@ -148,7 +148,7 @@ const Booking = () => {
 
         const title = encodeURIComponent(`Dentist Appointment: ${service}`);
         const details = encodeURIComponent(`Appointment for ${service} with ${name}`);
-        const location = encodeURIComponent("T Nagar Dental Clinic");
+        const location = encodeURIComponent("The Smile Hub Dental Clinic");
 
         // Note: We do NOT append 'Z' at the end, so Google treats it as "Floating Time" (User's Local Time)
         return `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${title}&dates=${start}/${end}&details=${details}&location=${location}`;
@@ -499,7 +499,7 @@ const Booking = () => {
                                             background: 'rgba(255,255,255,0.5)',
                                             transition: 'all 0.3s ease'
                                         }}
-                                        placeholder="+91 98765 43210"
+                                        placeholder="+1 212 555 0123"
                                         onFocus={(e) => {
                                             e.target.style.background = 'white';
                                             e.target.style.boxShadow = '0 5px 15px rgba(212, 175, 55, 0.1)';

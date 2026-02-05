@@ -65,7 +65,7 @@ const Navbar = () => {
                         justifyContent: 'center',
                         color: 'white'
                     }}>
-                        <span style={{ fontFamily: 'var(--font-heading)', fontSize: '1.2rem', fontWeight: 'bold' }}>T</span>
+                        <span style={{ fontFamily: 'var(--font-heading)', fontSize: '1.2rem', fontWeight: 'bold' }}>S</span>
                     </div>
                     <div style={{ display: 'flex', flexDirection: 'column' }}>
                         <span style={{
@@ -76,7 +76,7 @@ const Navbar = () => {
                             lineHeight: '1',
                             letterSpacing: '-0.5px'
                         }}>
-                            T Nagar <span style={{ color: 'var(--color-accent)' }}>Dental</span>
+                            The Smile <span style={{ color: 'var(--color-accent)' }}>Hub</span>
                         </span>
                         <span style={{
                             fontSize: '0.65rem',
@@ -420,7 +420,7 @@ const Navbar = () => {
                     </Link>
                     <div style={{ marginTop: '1rem', display: 'flex', alignItems: 'center', gap: '0.5rem', color: 'var(--color-text-secondary)', fontSize: '0.9rem' }}>
                         <Phone size={16} />
-                        <span>+91 98765 43210</span>
+                        <span>+1 212 555 0123</span>
                     </div>
                 </div>
             </div>

@@ -68,7 +68,7 @@ const Footer = () => {
                                 color: '#fff',
                                 letterSpacing: '0.5px'
                             }}>
-                                T Nagar <span style={{ color: '#d4af37' }}>Dental</span>
+                                The Smile <span style={{ color: '#d4af37' }}>Hub</span>
                             </span>
                         </div>
                         <p style={{
@@ -176,7 +176,7 @@ const Footer = () => {
                                 }}>
                                     <MapPin size={16} color="#d4af37" />
                                 </div>
-                                <span style={{ fontSize: '0.95rem', lineHeight: '1.6' }}>123, North Usman Road,<br />T Nagar, Chennai - 600017</span>
+                                <span style={{ fontSize: '0.95rem', lineHeight: '1.6' }}>123 ABC Street, New York,<br />NY 10001</span>
                             </li>
                             <li style={{ display: 'flex', gap: '1rem', color: '#a0a0a0' }}>
                                 <div style={{
@@ -190,7 +190,7 @@ const Footer = () => {
                                 }}>
                                     <Phone size={16} color="#d4af37" />
                                 </div>
-                                <span style={{ fontSize: '0.95rem' }}>+91 98765 43210</span>
+                                <span style={{ fontSize: '0.95rem' }}>+1 212 555 0123</span>
                             </li>
                             <li style={{ display: 'flex', gap: '1rem', color: '#a0a0a0' }}>
                                 <div style={{
@@ -204,7 +204,7 @@ const Footer = () => {
                                 }}>
                                     <Mail size={16} color="#d4af37" />
                                 </div>
-                                <span style={{ fontSize: '0.95rem' }}>info@tnagardental.com</span>
+                                <span style={{ fontSize: '0.95rem' }}>info@thesmilehub.com</span>
                             </li>
                         </ul>
                     </div>
@@ -222,7 +222,7 @@ const Footer = () => {
                     color: '#666',
                     fontSize: '0.9rem'
                 }}>
-                    <p>&copy; {new Date().getFullYear()} T Nagar Dental Clinic. All rights reserved.</p>
+                    <p>&copy; {new Date().getFullYear()} The Smile Hub Dental Clinic. All rights reserved.</p>
                     <div style={{ display: 'flex', gap: '2rem' }}>
                         <Link to="/" style={{ color: '#666', textDecoration: 'none', transition: 'color 0.3s' }} onMouseEnter={e => e.target.style.color = '#d4af37'} onMouseLeave={e => e.target.style.color = '#666'}>Privacy Policy</Link>
                         <Link to="/" style={{ color: '#666', textDecoration: 'none', transition: 'color 0.3s' }} onMouseEnter={e => e.target.style.color = '#d4af37'} onMouseLeave={e => e.target.style.color = '#666'}>Terms of Service</Link>

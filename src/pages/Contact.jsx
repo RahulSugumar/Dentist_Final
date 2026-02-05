@@ -69,20 +69,20 @@ const Contact = () => {
         {
             icon: MapPin,
             title: "Visit Us",
-            content: "123, North Usman Road, T Nagar, Chennai - 600017",
+            content: "123 ABC Street, New York, NY 10001",
             action: null
         },
         {
             icon: Phone,
             title: "Call Us",
-            content: "+91 98765 43210",
-            action: "tel:+919876543210"
+            content: "+1 212 555 0123",
+            action: "tel:+12125550123"
         },
         {
             icon: Mail,
             title: "Email Us",
-            content: "info@tnagardental.com",
-            action: "mailto:info@tnagardental.com"
+            content: "info@thesmilehub.com",
+            action: "mailto:info@thesmilehub.com"
         },
         {
             icon: Clock,
@@ -99,6 +99,8 @@ const Contact = () => {
             background: 'radial-gradient(circle at 50% 0%, #ffffff 0%, #f8f9fa 100%)',
             minHeight: '100vh'
         }}>
+            {/* ... (background code omitted) ... */}
+
             {/* Global Ambient Background */}
             <div style={{
                 position: 'fixed',
@@ -110,6 +112,7 @@ const Contact = () => {
                 pointerEvents: 'none',
                 overflow: 'hidden'
             }}>
+                {/* ... (orbs code omitted) ... */}
                 <div className="global-orb-1" style={{
                     position: 'absolute',
                     top: '10%',
@@ -148,6 +151,7 @@ const Contact = () => {
                 position: 'relative',
                 overflow: 'hidden'
             }}>
+                {/* ... (hero content omitted) ... */}
                 <div className="container text-center" ref={heroRef} style={{ position: 'relative', zIndex: 1 }}>
                     <span style={{
                         display: 'inline-block',
@@ -286,7 +290,7 @@ const Contact = () => {
                             </div>
 
                             <div style={{ marginTop: '3rem' }}>
-                                <a href="https://wa.me/919876543210" target="_blank" rel="noopener noreferrer"
+                                <a href="https://wa.me/12125550123" target="_blank" rel="noopener noreferrer"
                                     className="btn btn-primary"
                                     style={{
                                         display: 'inline-flex',
@@ -315,7 +319,7 @@ const Contact = () => {
                             position: 'relative'
                         }}>
                             <iframe
-                                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3886.685166752763!2d80.23761631482294!3d13.040072990810756!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a526655a5555555%3A0x5555555555555555!2sT.+Nagar%2C+Chennai%2C+Tamil+Nadu!5e0!3m2!1sen!2sin!4v1625000000000!5m2!1sen!2sin"
+                                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d193595.15830869428!2d-74.11976373946229!3d40.69766374874431!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c24fa5d33f083b%3A0xc80b8f06e177fe62!2sNew%20York%2C%20NY%2C%20USA!5e0!3m2!1sen!2sin!4v1625000000000!5m2!1sen!2sin"
                                 width="100%"
                                 height="100%"
                                 style={{ border: 0, minHeight: '600px', filter: 'grayscale(0.2) contrast(1.1)' }}
