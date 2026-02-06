@@ -4,6 +4,7 @@ import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { Star, Shield, Activity, User, CheckCircle } from 'lucide-react';
 import doctorImage from '../assets/confident-doctor-clinic.jpg';
+import heroImage from '../assets/dentalReception.jpg';
 import SmileGallery from '../components/SmileGallery';
 
 gsap.registerPlugin(ScrollTrigger);
@@ -427,19 +428,30 @@ const Home = () => {
 
                         {/* Visual Content */}
                         <div className="hero-visual" style={{ position: 'relative', height: '600px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                            {/* Abstract Gradient Mesh Background (Replaces Image) */}
+                            {/* Hero Image Container */}
                             <div style={{
                                 width: '100%',
                                 maxWidth: '100%',
                                 height: '100%',
                                 position: 'relative',
                                 zIndex: 1,
-                                background: 'linear-gradient(135deg, #958e8eff 0%, #a8a887ff 100%)',
                                 borderRadius: '200px 200px 20px 20px',
-                                boxShadow: '0 30px 60px -12px rgba(0,0,0,0.25), inset 0 1px 1px rgba(255,255,255,0.4), inset 0 -1px 1px rgba(0,0,0,0.1)',
+                                boxShadow: '0 30px 60px -12px rgba(0,0,0,0.25)',
                                 overflow: 'hidden',
-                                border: '1px solid rgba(255,255,255,0.2)'
+                                border: '4px solid rgba(255,255,255,0.4)'
                             }}>
+                                <img
+                                    src={heroImage}
+                                    alt="Luxury Dental Clinic"
+                                    style={{
+                                        width: '100%',
+                                        height: '100%',
+                                        objectFit: 'cover',
+                                        objectPosition: 'center',
+                                        transition: 'transform 0.5s ease-out'
+                                    }}
+                                />
+
                                 {/* Glass Shine Effect */}
                                 <div style={{
                                     position: 'absolute',
@@ -451,45 +463,6 @@ const Home = () => {
                                     pointerEvents: 'none',
                                     zIndex: 10
                                 }}></div>
-                                {/* Animated Gradient Orbs */}
-                                <div style={{
-                                    position: 'absolute',
-                                    top: '-20%',
-                                    left: '-20%',
-                                    width: '140%',
-                                    height: '140%',
-                                    background: 'radial-gradient(circle at 50% 50%, rgba(212, 175, 55, 0.15), transparent 60%)',
-                                    animation: 'rotate 20s linear infinite'
-                                }}></div>
-                                <div style={{
-                                    position: 'absolute',
-                                    top: '30%',
-                                    right: '-10%',
-                                    width: '300px',
-                                    height: '300px',
-                                    background: 'radial-gradient(circle, rgba(212, 175, 55, 0.1) 0%, transparent 70%)',
-                                    borderRadius: '50%',
-                                    filter: 'blur(40px)'
-                                }}></div>
-                                <div style={{
-                                    position: 'absolute',
-                                    bottom: '10%',
-                                    left: '10%',
-                                    width: '200px',
-                                    height: '200px',
-                                    background: 'linear-gradient(45deg, rgba(212, 175, 55, 0.15), rgba(255, 255, 255, 0.8))',
-                                    borderRadius: '50%',
-                                    filter: 'blur(30px)'
-                                }}></div>
-
-                                {/* Decorative Pattern Overlay */}
-                                <div style={{
-                                    position: 'absolute',
-                                    inset: 0,
-                                    opacity: 0.4,
-                                    backgroundImage: 'radial-gradient(#d4af37 1px, transparent 1px)',
-                                    backgroundSize: '30px 30px'
-                                }}></div>
 
                                 {/* Gold Ring Accent */}
                                 <div style={{
@@ -500,8 +473,8 @@ const Home = () => {
                                     height: '100px',
                                     border: '2px solid var(--color-accent)',
                                     borderRadius: '50%',
-                                    zIndex: -1,
-                                    opacity: 0.6
+                                    zIndex: 2,
+                                    opacity: 0.8
                                 }}></div>
                             </div>
 
