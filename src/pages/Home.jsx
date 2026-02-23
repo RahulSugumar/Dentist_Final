@@ -393,12 +393,12 @@ const Home = () => {
                             </p>
 
                             <div ref={btnRef} style={{ display: 'flex', gap: '1.5rem', alignItems: 'center' }}>
-                                <Link to="/booking" className="btn btn-primary" style={{
+                                <Link to="/contact" className="btn btn-primary" style={{
                                     padding: '1rem 2.5rem',
                                     fontSize: '1rem',
                                     boxShadow: '0 10px 30px rgba(212, 175, 55, 0.25)'
                                 }}>
-                                    Book Appointment
+                                    Contact Us
                                 </Link>
                                 <Link to="/services" style={{
                                     display: 'flex',
@@ -519,7 +519,7 @@ const Home = () => {
                                     </div>
                                     <div>
                                         <p style={{ fontSize: '0.75rem', color: 'var(--color-text-secondary)', margin: 0, fontWeight: '700', textTransform: 'uppercase', letterSpacing: '1px' }}>Priority Access</p>
-                                        <p style={{ fontSize: '1.35rem', fontWeight: '700', margin: 0, color: 'var(--color-text-primary)', fontFamily: 'var(--font-heading)' }}>Book Online</p>
+                                        <p style={{ fontSize: '1.35rem', fontWeight: '700', margin: 0, color: 'var(--color-text-primary)', fontFamily: 'var(--font-heading)' }}>Contact Us</p>
                                     </div>
                                 </div>
 
@@ -527,7 +527,7 @@ const Home = () => {
                                     Experience the pinnacle of dental care. Secure your consultation with our senior specialists today.
                                 </p>
 
-                                <Link to="/booking" className="btn" style={{
+                                <Link to="/contact" className="btn" style={{
                                     width: '100%',
                                     padding: '1.1rem',
                                     fontSize: '1rem',
@@ -541,7 +541,7 @@ const Home = () => {
                                     textDecoration: 'none',
                                     texthover: 'var(--color-text-primary)',
                                 }}>
-                                    Reserve Your Slot
+                                    Contact Us Today
                                 </Link>
                             </div>
 
@@ -779,7 +779,7 @@ const Home = () => {
                             }}>
                                 <img
                                     src={doctorImage}
-                                    alt="Dr. Anitha Rao"
+                                    alt="Dr. Sarah Mitchell"
                                     style={{ width: '100%', height: '100%', objectFit: 'cover' }}
                                 />
 
@@ -852,7 +852,7 @@ const Home = () => {
                                 fontFamily: 'var(--font-heading)',
                                 lineHeight: '1.2'
                             }}>
-                                Dr. Anitha Rao
+                                Dr. Sarah Mitchell
                             </h2>
                             <p style={{
                                 fontSize: '1.15rem',
@@ -861,14 +861,14 @@ const Home = () => {
                                 lineHeight: '1.8',
                                 fontWeight: '300'
                             }}>
-                                A leading figure in modern dentistry, Dr. Rao combines <strong style={{ color: 'var(--color-text-primary)' }}>artistic vision</strong> with <strong style={{ color: 'var(--color-text-primary)' }}>clinical precision</strong>. Known for her gentle approach, she specializes in creating smiles that enhance both aesthetics and function.
+                                A leading figure in modern dentistry, Dr. Mitchell combines <strong style={{ color: 'var(--color-text-primary)' }}>artistic vision</strong> with <strong style={{ color: 'var(--color-text-primary)' }}>clinical precision</strong>. Known for her gentle approach, she specializes in creating smiles that enhance both aesthetics and function.
                             </p>
 
                             <ul style={{ display: 'flex', flexDirection: 'column', gap: '1.25rem', marginBottom: '3rem' }}>
                                 {[
                                     'MDS in Conservative Dentistry & Endodontics',
                                     'Certified Implantologist (ICOI, USA)',
-                                    'Member of Indian Dental Association',
+                                    'Member of American Dental Association',
                                     'Specialist in Pain-Free Laser Dentistry'
                                 ].map((item, index) => (
                                     <li key={index} className="flex items-center" style={{ gap: '1rem' }}>
@@ -910,7 +910,7 @@ const Home = () => {
                                     e.currentTarget.style.color = 'var(--color-text-primary)';
                                 }}
                             >
-                                Learn More About Dr. Rao
+                                Learn More About Dr. Mitchell
                                 <span style={{ fontSize: '1.2rem' }}>→</span>
                             </Link>
                         </div>
@@ -965,7 +965,7 @@ const Home = () => {
                             {
                                 name: 'Sarah Jenkins',
                                 treatment: 'Smile Makeover',
-                                quote: "I never thought I could love my smile this much. Dr. Rao's attention to detail is simply unmatched. The entire experience was like visiting a spa.",
+                                quote: "I never thought I could love my smile this much. Dr. Mitchell's attention to detail is simply unmatched. The entire experience was like visiting a spa.",
                                 rating: 5
                             },
                             {
@@ -975,7 +975,7 @@ const Home = () => {
                                 rating: 5
                             },
                             {
-                                name: 'Priya Sharma',
+                                name: 'Emily Davis',
                                 treatment: 'Invisalign',
                                 quote: "Finally, a dentist I actually look forward to visiting! The clinic is stunning, and the care is genuinely compassionate. Highly recommended.",
                                 rating: 5

@@ -245,7 +245,7 @@ const About = () => {
                             }}>
                                 <img
                                     src={doctorImage}
-                                    alt="Dr. Anitha Rao"
+                                    alt="Dr. Sarah Mitchell"
                                     style={{ width: '100%', height: 'auto', display: 'block' }}
                                 />
                                 <div style={{
@@ -263,7 +263,7 @@ const About = () => {
                                     color: 'white'
                                 }}>
                                     <p style={{ margin: 0, fontSize: '0.9rem', opacity: 0.9, textTransform: 'uppercase', letterSpacing: '1px' }}>Founder & Lead Specialist</p>
-                                    <h3 style={{ margin: 0, fontSize: '2rem', fontFamily: 'var(--font-heading)', color: 'white' }}>Dr. Anitha Rao</h3>
+                                    <h3 style={{ margin: 0, fontSize: '2rem', fontFamily: 'var(--font-heading)', color: 'white' }}>Dr. Sarah Mitchell</h3>
                                 </div>
                             </div>
                         </div>
@@ -274,7 +274,7 @@ const About = () => {
                                 A Passion for <span style={{ color: 'var(--color-accent)', fontStyle: 'italic' }}>Perfection</span>
                             </h2>
                             <p style={{ fontSize: '1.15rem', marginBottom: '1.5rem', color: 'var(--color-text-secondary)', lineHeight: '1.8' }}>
-                                Dr. Anitha Rao is a highly skilled dental specialist with over <strong>15 years of experience</strong> in creating beautiful smiles. A gold medalist from the Government Dental College, Chennai, she combines academic excellence with artistic vision.
+                                Dr. Sarah Mitchell is a highly skilled dental specialist with over <strong>15 years of experience</strong> in creating beautiful smiles. A top honors graduate from the Harvard School of Dental Medicine, she combines academic excellence with artistic vision.
                             </p>
                             <p style={{ fontSize: '1.15rem', marginBottom: '2.5rem', color: 'var(--color-text-secondary)', lineHeight: '1.8' }}>
                                 She specializes in <strong style={{ color: 'var(--color-text-primary)' }}>Micro-Endodontics</strong> and <strong style={{ color: 'var(--color-text-primary)' }}>Cosmetic Dentistry</strong>, using the latest technology to ensure precise, painless treatments. Her approach is deeply rooted in empathy, ensuring that every patient feels heard, understood, and cared for.

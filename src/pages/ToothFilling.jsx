@@ -178,8 +178,8 @@ const ToothFilling = () => {
 
                             <div style={{ textAlign: 'center' }}>
                                 <p style={{ marginBottom: '1.5rem', fontWeight: '500' }}>Ready to restore your smile?</p>
-                                <Link to="/booking" className="btn btn-primary" style={{ width: '100%', textDecoration: 'none' }}>
-                                    Book Appointment <ArrowRight size={18} style={{ marginLeft: '8px' }} />
+                                <Link to="/contact" className="btn btn-primary" style={{ width: '100%', textDecoration: 'none' }}>
+                                    Contact Us <ArrowRight size={18} style={{ marginLeft: '8px' }} />
                                 </Link>
                             </div>
                         </div>

@@ -301,23 +301,7 @@ const Navbar = () => {
                             Get Started
                         </Link>
 
-                        <Link to="/booking" className="btn" style={{
-                            background: 'var(--color-text-primary)',
-                            color: 'white',
-                            padding: '0.8rem 2rem',
-                            borderRadius: '50px',
-                            fontSize: '0.9rem',
-                            fontWeight: '600',
-                            boxShadow: '0 10px 20px rgba(0,0,0,0.1)',
-                            border: 'none',
-                            display: 'flex',
-                            alignItems: 'center',
-                            gap: '0.5rem',
-                            textDecoration: 'none'
-                        }}>
-                            <span>Book Appointment</span>
-                            <Star size={14} fill="var(--color-accent)" color="var(--color-accent)" />
-                        </Link>
+
                     </div>
                 </div>
 
@@ -401,23 +385,7 @@ const Navbar = () => {
                         Get Started
                     </Link>
 
-                    <Link
-                        to="/booking"
-                        className="btn"
-                        onClick={() => setIsOpen(false)}
-                        style={{
-                            width: '100%',
-                            background: 'var(--color-text-primary)',
-                            color: 'white',
-                            padding: '1rem',
-                            borderRadius: '12px',
-                            justifyContent: 'center',
-                            fontWeight: '600',
-                            textDecoration: 'none'
-                        }}
-                    >
-                        Book Appointment
-                    </Link>
+
                     <div style={{ marginTop: '1rem', display: 'flex', alignItems: 'center', gap: '0.5rem', color: 'var(--color-text-secondary)', fontSize: '0.9rem' }}>
                         <Phone size={16} />
                         <span>+1 212 555 0123</span>
